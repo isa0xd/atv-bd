@@ -1,0 +1,187 @@
+1. Qual comando DML é usado para inserir um novo registro em uma tabela no banco de dados?
+c) INSERT
+
+2. Para alterar dados já existentes em uma tabela, usamos o comando:
+d) UPDATE
+
+3. Qual comando DDL é usado para criar uma nova tabela em um banco de dados?
+a) CREATE TABLE
+
+4. O comando DELETE FROM tabela remove:
+a) Somente registros específicos com condição de exclusão
+
+5. Qual a função do comando TRUNCATE em comparação com DELETE?
+c) Remove todos os registros, mas mantém a estrutura da tabela
+
+6.Para adicionar uma nova coluna em uma tabela existente, qual comando DDL usamos?
+b) ALTER TABLE
+
+7. Qual comando é utilizado para alterar o tipo de dado de uma coluna existente?
+c) ALTER TABLE
+
+8. Quando queremos eliminar uma tabela completamente do banco de dados, usamos:
+b) DROP TABLE
+
+9. Para selecionar todos os registros de uma tabela chamada clientes, utilizamos:
+a) SELECT * FROM clientes
+
+10. O comando INSERT INTO tabela (coluna1, coluna2) VALUES (valor1, valor2) serve para:
+a) Adicionar um novo registro com valores para as colunas especificadas
+
+11. Como se chama a operação de remover todos os registros de uma tabela sem eliminar sua estrutura?
+c) TRUNCATE
+
+12. Qual comando DDL permite modificar a estrutura de uma tabela?
+a) ALTER TABLE
+
+13. Para renomear uma tabela chamada pedidos para pedidos_venda, qual comando deve ser usado?
+a) ALTER TABLE pedidos RENAME TO pedidos_venda
+
+14. O comando DDL utilizado para criar um banco de dados é:
+a) CREATE DATABASE
+
+15. Para remover uma coluna específica em uma tabela, usamos:
+a) ALTER TABLE tabela DROP COLUMN coluna
+
+16. O comando SELECT pode ser utilizado com qual cláusula para filtrar registros específicos?
+a) WHERE
+
+17. Para atualizar múltiplos registros de uma só vez, usamos o comando:
+c) UPDATE
+
+18. Ao realizar uma inserção de dados, se quisermos que uma coluna receba o valor padrão, usamos:
+d) OMITIR o valor
+
+19. O comando ALTER TABLE nome_tabela ADD CONSTRAINT serve para:
+c) Alterar a estrutura adicionando regras
+
+20. Para selecionar registros com valores únicos em uma coluna específica, usamos:
+a) SELECT DISTINCT coluna FROM tabela
+
+21. Instrução capaz de copiar dados de uma tabela e inseri-los em outra existente:
+e) INSERT INTO SELECT
+
+22. Consulta SQL que retorna nomes dos funcionários que ganham mais de 3000, moram em Bragança/SP e têm dependentes:
+d) SELECT Funcionarios.nome FROM Funcionarios JOIN Dependentes
+ON Funcionarios.id = Dependentes.funcionario_id
+WHERE Funcionarios.salario > 3000 AND Funcionarios.cidade = 'Bragança' AND Funcionarios.estado = 'SP';
+
+23. Linguagem de consulta utilizada para interagir com bancos de dados relacionais:
+a) SQL
+
+24. Tipo de dado relacionado corretamente com sua definição:
+a) CHAR (tamanho): sequência de caracteres de tamanho fixo
+
+25. Qual código SQL contém comandos do tipo DDL?
+a) DROP TABLE questoes
+
+CREATE DATABASE EmpresaDB;
+USE EmpresaDB;
+
+CREATE TABLE Departamentos (
+    Codigo INT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL,
+    Localizacao VARCHAR(100),
+    CodigoFuncionarioGerente INT
+);
+CREATE TABLE Funcionarios (
+    Codigo INT PRIMARY KEY,
+    PrimeiroNome VARCHAR(50) NOT NULL,
+    SegundoNome VARCHAR(50),
+    UltimoNome VARCHAR(50) NOT NULL,
+    DataNasci DATE,
+    CPF VARCHAR(14),
+    RG VARCHAR(12),
+    Endereco VARCHAR(100),
+    CEP VARCHAR(10),
+    Cidade VARCHAR(50),
+    Fone VARCHAR(20),
+    CodigoDepartamento INT,
+    Funcao VARCHAR(50),
+    Salario DECIMAL(10, 2),
+    FOREIGN KEY (CodigoDepartamento) REFERENCES Departamentos(Codigo)
+    );
+INSERT INTO Departamentos (Codigo, Nome, Localizacao, CodigoFuncionarioGerente) VALUES
+(1, 'Banco de Dados', 'Bloco A', 3),
+(2, 'Tecnologia da Informação', 'Bloco B', 9),
+(3, 'Venda de Picolé', 'Bloco C', 4),
+(4, 'Barbeiro', 'Bloco D', 5);
+
+INSERT INTO Funcionarios (Codigo, PrimeiroNome, SegundoNome, UltimoNome, DataNasci, CPF, RG, Endereco, CEP, Cidade, Fone, CodigoDepartamento, Funcao, Salario) VALUES
+(1, 'Ana', NULL, 'Silva', '1990-03-15', '111.111.111-11', '1234567', 'Rua A, 123', '50000-000', 'Foz', '(81) 99999-0001', 1, 'Gerente', 3500.00),
+(2, 'Bruno', 'Marques', 'Lima', '1985-07-20', '222.222.222-22', '2345678', 'Rua B, 456', '50000-001', 'Foz', '(81) 99999-0002', 1, 'Assistente', 1800.00),
+(3, 'Carlos', 'Eduardo', 'Souza', '1992-01-10', '333.333.333-33', '3456789', 'Rua C, 789', '50000-002', 'Foz', '(81) 99999-0003', 2, 'Gerente', 5000.00),
+(4, 'Daniela', NULL, 'Costa', '1998-09-05', '444.444.444-44', '4567890', 'Rua D, 101', '50000-003', 'Foz', '(81) 99999-0004', 2, 'Desenvolvedor', 3200.00),
+(5, 'Eduardo', 'Henrique', 'Barros', '1980-11-25', '555.555.555-55', '5678901', 'Rua E, 202', '50000-004', 'Foz', '(81) 99999-0005', 3, 'Gerente', 4800.00),
+(6, 'Fernanda', NULL, 'Almeida', '1995-04-18', '666.666.666-66', '6789012', 'Rua F, 303', '50000-005', 'Foz', '(81) 99999-0006', 3, 'Analista', 2600.00),
+(7, 'Gustavo', 'André', 'Melo', '1987-12-30', '777.777.777-77', '7890123', 'Rua G, 404', '50000-006', 'Foz', '(81) 99999-0007', 4, 'Gerente', 3900.00),
+(8, 'Helena', NULL, 'Santos', '1999-06-11', '888.888.888-88', '8901234', 'Rua H, 505', '50000-007', 'Foz', '(81) 99999-0008', 4, 'Telefonista', 1300.00),
+(9, 'Igor', NULL, 'Vieira', '1994-10-22', '999.999.999-99', '9012345', 'Rua I, 606', '50000-008', 'Foz', '(81) 99999-0009', 2, 'Supervisor', 4200.00);
+
+SELECT PrimeiroNome, UltimoNome
+FROM Funcionarios
+ORDER BY UltimoNome;
+
+SELECT *
+FROM Funcionarios
+ORDER BY Cidade;
+
+SELECT *
+FROM Funcionarios
+WHERE Salario > 1000
+ORDER BY PrimeiroNome, SegundoNome, UltimoNome;
+
+SELECT PrimeiroNome, DataNasci
+FROM Funcionarios
+ORDER BY DataNasci DESC;
+
+SELECT CONCAT(PrimeiroNome, ' ', COALESCE(SegundoNome, ''), ' ', UltimoNome) AS NomeCompleto, Fone
+FROM Funcionarios
+ORDER BY NomeCompleto;
+
+SELECT SUM(Salario) AS TotalFolhaPagamento
+FROM Funcionarios;
+
+SELECT f.PrimeiroNome, d.Nome AS Departamento, f.Funcao
+FROM Funcionarios f
+JOIN Departamentos d ON f.CodigoDepartamento = d.Codigo;
+
+SELECT d.Nome AS Departamento,
+       CONCAT(f.PrimeiroNome, ' ', COALESCE(f.SegundoNome, ''), ' ', f.UltimoNome) AS Gerente
+FROM Departamentos d
+JOIN Funcionarios f ON d.CodigoFuncionarioGerente = f.Codigo;
+
+SELECT d.Nome AS Departamento, SUM(f.Salario) AS TotalFolha
+FROM Funcionarios f
+JOIN Departamentos d ON f.CodigoDepartamento = d.Codigo
+GROUP BY d.Nome;
+
+SELECT DISTINCT d.Nome AS Departamento
+FROM Funcionarios f
+JOIN Departamentos d ON f.CodigoDepartamento = d.Codigo
+WHERE f.Funcao = 'Supervisor';
+
+SELECT COUNT(*) AS TotalFuncionarios
+FROM Funcionarios;
+
+SELECT AVG(Salario) AS SalarioMedio
+FROM Funcionarios;
+
+SELECT CONCAT(PrimeiroNome, ' ', COALESCE(SegundoNome, ''), ' ', UltimoNome) AS Nome
+FROM Funcionarios
+WHERE Cidade = 'Recife' AND Funcao = 'Telefonista';
+
+SELECT d.Nome AS Departamento,
+       CONCAT(f.PrimeiroNome, ' ', COALESCE(f.SegundoNome, ''), ' ', f.UltimoNome) AS NomeFuncionario
+FROM Funcionarios f
+JOIN Departamentos d ON f.CodigoDepartamento = d.Codigo
+ORDER BY d.Nome, NomeFuncionario;
+
+SELECT CONCAT(PrimeiroNome, ' ', UltimoNome) AS NomeCompleto
+FROM Funcionarios
+WHERE SegundoNome IS NULL OR SegundoNome = '';
+
+SELECT d.Nome AS Departamento, MIN(f.Salario) AS MenorSalario
+FROM Funcionarios f
+JOIN Departamentos d ON f.CodigoDepartamento = d.Codigo
+GROUP BY d.Nome;
